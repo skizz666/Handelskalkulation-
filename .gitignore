@@ -1,0 +1,17 @@
+﻿/Preiskalkulator.sln
+# Standard .NET Core ignores
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Rider specific (JetBrains IDE)
+.idea/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
