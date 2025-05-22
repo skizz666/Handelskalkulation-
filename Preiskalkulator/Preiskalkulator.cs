@@ -41,7 +41,7 @@ public class Preiskalkulator
     public static double BerechneZielverkaufspreis(double barverkaufspreis, double kundenskonto,
         double verkaufsprovision)
     {
-        double ergebnis = barverkaufspreis * (1.0 - ((kundenskonto + barverkaufspreis) / 100.0));
+        double ergebnis = barverkaufspreis * (1.0 - ((kundenskonto + kundenskonto) / 100.0));
         return ergebnis;
     }
 }

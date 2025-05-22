@@ -13,18 +13,28 @@ double kundenrabatt = 12.0;
 
 double nettoeinkaufspreis = Preiskalkulator.Preiskalkulator.BerechneNettoEinkaufspreis(bruttoeinkaufspreis,
     mwstsatz);
+Console.WriteLine(nettoeinkaufspreis);
 
 double zieleinkaufspreis = Preiskalkulator.Preiskalkulator.BerechneZieleinkaufspreis(nettoeinkaufspreis,
     lieferantenrabatt);
+Console.WriteLine(zieleinkaufspreis);
 
 double bareinkaufspreis = Preiskalkulator.Preiskalkulator.BerechneBareinkaufspreis(zieleinkaufspreis,
     lieferantenskonto);
+Console.WriteLine(bareinkaufspreis);
 
 double bezugspreis = Preiskalkulator.Preiskalkulator.BerechneBezugspreis(bareinkaufspreis,
     bezugskosten);
+Console.WriteLine(bezugspreis);
 
-double selbstkostenpreis = Preiskalkulator.Preiskalkulator.BerechneSelbstkostenpreis(bezugspreis,gemeinkostenzuschlag );
+double selbstkostenpreis = Preiskalkulator.Preiskalkulator.BerechneSelbstkostenpreis(bezugspreis, gemeinkostenzuschlag );
+Console.WriteLine(selbstkostenpreis);
 
 double barverkaufspreis = Preiskalkulator.Preiskalkulator.BerechneBarverkaufspreis(selbstkostenpreis, gewinnaufschlag);
-
 Console.WriteLine(barverkaufspreis);
+
+double zielverkaufspreis =
+    Preiskalkulator.Preiskalkulator.BerechneZielverkaufspreis(barverkaufspreis, kundenskonto, verkaufsprovision);
+Console.WriteLine(zielverkaufspreis);
+
+
