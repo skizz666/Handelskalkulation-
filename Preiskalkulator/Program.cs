@@ -37,4 +37,10 @@ double zielverkaufspreis =
     Preiskalkulator.Preiskalkulator.BerechneZielverkaufspreis(barverkaufspreis, kundenskonto, verkaufsprovision);
 Console.WriteLine(zielverkaufspreis);
 
+double nettoverkaufspreis =
+    Preiskalkulator.Preiskalkulator.BerechneNettoverkaufspreis(zielverkaufspreis, kundenrabatt);
+Console.WriteLine(nettoverkaufspreis);
 
+double bruttoverkaufspreis =
+    Preiskalkulator.Preiskalkulator.BerechneBruttoverkaufspreis(nettoverkaufspreis, mwstsatz);
+Console.WriteLine(bruttoverkaufspreis);
