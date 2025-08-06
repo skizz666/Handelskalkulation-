@@ -97,19 +97,19 @@ public class Preiskalkulator
 
     public static double RueckBerechneZieleinkaufspreis(double bareinkaufspreis, double lieferantenskonto)
     {
-        double ergebnis = bareinkaufspreis * (1.0 + (lieferantenskonto * 100));
+        double ergebnis = bareinkaufspreis / (1.0 - (lieferantenskonto / 100.0));
         return ergebnis;
     }
 
     public static double RueckBerechneNettoeinkaufspreis(double zieleinkaufspreis, double lieferantenrabatt)
     {
-        double ergebnis = zieleinkaufspreis * (1.0 + (lieferantenrabatt * 100));
+        double ergebnis = zieleinkaufspreis / (1.0 - (lieferantenrabatt / 100.0));
         return ergebnis;
     }
 
     public static double RueckBerechnungBruttoeinkaufspreis(double nettoeinkaufspreis, double mehrwertsteuersatz)
     {
-        double ergebnis = nettoeinkaufspreis * (1.0 + (mehrwertsteuersatz * 100));
+        double ergebnis = nettoeinkaufspreis * (1.0 + (mehrwertsteuersatz / 100.0));
         return ergebnis;
     }
 }
