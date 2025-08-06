@@ -128,29 +128,60 @@ namespace Preiskalkulator
     {
         public static void Main(string[] args)
         {
-            // --- INPUT ---
-            // These are the known values.
-            // Comment out or remove a value to see the calculator derive it.
-            var values = new Dictionary<string, double>
+            var values = new Dictionary<string, double>();
+            string gesucht = "";
+
+            // The order of variables here determines the order they are asked in the UI.
+            var variableNames = new[]
             {
-                { "mwstsatz", 19.0 },
-                { "bruttoeinkaufspreis", 3100.0 },
-                { "lieferantenrabatt", 6.0 },
-                { "lieferantenskonto", 0.0 },
-                { "bezugskosten", 780.0 },
-                { "gemeinkostenzuschlag", 80.0 },
-                { "gewinnaufschlag", 43.0 },
-                { "kundenskonto", 0.0 },
-                { "verkaufsprovision", 0.0 },
-                { "kundenrabatt", 12.0 },
-                // { "bruttoverkaufspreis", 10058.45 }, // Example for backward calculation
+                "bruttoeinkaufspreis",
+                "lieferantenrabatt",
+                "lieferantenskonto",
+                "bezugskosten",
+                "gemeinkostenzuschlag",
+                "gewinnaufschlag",
+                "kundenskonto",
+                "verkaufsprovision",
+                "kundenrabatt",
+                "mwstsatz",
+                "bruttoverkaufspreis"
             };
 
-            // This is the value we want to find.
-            string gesucht = "Bruttoverkaufspreis";
+            Console.WriteLine("--- Interaktiver Preiskalkulator ---");
+            Console.WriteLine("Bitte geben Sie die bekannten Werte ein. Lassen Sie das Feld für den gesuchten Wert leer.");
 
-            Console.WriteLine("--- Preiskalkulator ---");
-            Console.WriteLine($"Gesuchter Wert: {gesucht}\n");
+            foreach (var name in variableNames)
+            {
+                Console.Write($"{name}: ");
+                string input = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    if (!string.IsNullOrEmpty(gesucht))
+                    {
+                        Console.WriteLine("Fehler: Es kann nur ein Wert auf einmal berechnet werden.");
+                        return;
+                    }
+                    gesucht = name;
+                }
+                else if (double.TryParse(input, out double value))
+                {
+                    values[name] = value;
+                }
+                else
+                {
+                    Console.WriteLine($"Fehler: Ungültige Eingabe für {name}. Bitte geben Sie eine Zahl ein.");
+                    return;
+                }
+            }
+
+            if (string.IsNullOrEmpty(gesucht))
+            {
+                Console.WriteLine("Fehler: Es wurde kein zu suchender Wert angegeben (alle Felder ausgefüllt).");
+                return;
+            }
+
+            Console.WriteLine($"\nGesuchter Wert: {gesucht}\n");
             Console.WriteLine("Gegebene Werte:");
             foreach (var kvp in values)
             {
